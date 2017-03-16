@@ -1,17 +1,17 @@
 `timescale 1ns / 1ps
 ////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company:  $w@gL0rds Inc.
+// Engineer: Ghandi
 // 
 // Create Date:    12:53:31 03/08/2017 
 // Design Name: 
 // Module Name:    GameControl 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
+// Project Name:   Nim
+// Target Devices: Nexys 3
+// Tool versions:  0
 // Description:    Control game flow and output text to display
 //
-// Dependencies: 
+// Dependencies:   Friends
 //
 // Revision: 
 // Revision 0.01 - File Created
@@ -21,7 +21,7 @@
 module GameControl(
     input reset,
     input [3:0] keyPress,
-	input clk,
+    input clk,
     output [160:0] txt
     );
     
@@ -165,6 +165,4 @@ module GameControl(
 		end
 		keyClear = 0;
     end
-
-
 endmodule
