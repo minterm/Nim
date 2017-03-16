@@ -1,8 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Company: Digilent Inc 2011
-// Engineer: Michelle Yu  
-//				 Josh Sackos
+// Engineer: Michelle Yu and Josh Sackos
 // Create Date:    07/23/2012 
 //
 // Module Name:    Decoder
@@ -15,12 +14,13 @@
 //					 the key that was pressed could be determined.
 //
 // Revision History: 
-// 						Revision 0.01 - File Created (Michelle Yu)
-//							Revision 0.02 - Converted from VHDL to Verilog (Josh Sackos)
+//                      Revision 0.01 - File Created (Michelle Yu)
+//                      Revision 0.02 - Converted from VHDL to Verilog (Josh Sackos)
+//                      Revision 0.03 - File edited for Nim project (Micah Cliffe and Alex Waz)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ==============================================================================================
-// 												Define Module
+// Define Module
 // ==============================================================================================
 module Decoder(
     clk,
@@ -30,15 +30,15 @@ module Decoder(
     );
 
 // ==============================================================================================
-// 											Port Declarations
+// Port Declarations
 // ==============================================================================================
-    input clk;						// 100MHz onboard clock
-    input [3:0] Row;				// Rows on KYPD
-    output [3:0] Col;			// Columns on KYPD
-    output [3:0] DecodeOut;	// Output data
+    input clk;             // 100MHz onboard clock
+    input [3:0] Row;        // Rows on KYPD
+    output [3:0] Col;       // Columns on KYPD
+    output [3:0] DecodeOut; // Output data
 
 // ==============================================================================================
-// 							  		Parameters, Regsiters, and Wires
+// Parameters, Regsiters, and Wires
 // ==============================================================================================
 	
 	// Output wires and registers
@@ -51,7 +51,7 @@ module Decoder(
 	reg [22:0] chill = 0;
 
 // ==============================================================================================
-// 												Implementation
+// Implementation
 // ==============================================================================================
 
 	always @(posedge clk) begin
@@ -174,8 +174,11 @@ module Decoder(
 				
 				chill = chill + 1;
 				if (chill == 6250000) begin
-					DecodeOut <= 4'b1110; 		// default is E. Retains every other key for a quarter second length
-					chill = 0;
+					// Default is E. Retains every other key for a quarter second length
+					// E is chosen because it is unused in the Nim game.
+					// Quarter second is determined because clk is 25 MHz.
+					DecodeOut <= 4'b1110;
+					chill      = 0;
 				end
 			end
 				
