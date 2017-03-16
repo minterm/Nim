@@ -1,17 +1,17 @@
 `timescale 1ns / 1ps
 ////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company:  $w@gL0rds Inc.
+// Engineer: Ghandi
 // 
 // Create Date:    13:18:44 02/27/2017 
-// Design Name: 
+// Design Name:    Pretty
 // Module Name:    PespsiCola 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
+// Project Name:   Nim
+// Target Devices: Nexys 3
+// Tool versions:  0
+// Description:    Play th Game
 //
-// Dependencies: 
+// Dependencies:   Friends
 //
 // Revision: 
 // Revision 0.01 - File Created
@@ -34,10 +34,10 @@ module PespsiCola(
 		q <= q + 1;
 	end
 	
-	// 50Mhz ÷ 2^17 = 381.47Hz
+	// 50Mhz Ã· 2^17 = 381.47Hz
 	assign segclk = q[16];
 	
-	// 100Mhz ÷ 2^2 = 25MHz
+	// 100Mhz Ã· 2^2 = 25MHz
 	assign dclk = q[1];
 
 endmodule
