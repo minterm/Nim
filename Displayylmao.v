@@ -1,14 +1,14 @@
 `timescale 1ns / 1ps
 ////////////////////////////////////////////////////////////////////////////////
 // Company:  Swag L0rds Inc.
-// Engineer: Elon Musk
+// Engineer: Ghandi
 //
 // Create Date:    12:15:03 02/27/2017
 // Design Name:    Pretty
 // Module Name:    Displayylmao
-// Project Name:   Nim, bitch
+// Project Name:   Nim
 // Target Devices: Nexys 3
-// Tool versions:  69
+// Tool versions:  0
 // Description:    Display th game
 //
 // Dependencies:   Friends
@@ -19,26 +19,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 module Displayylmao(
-	input wire dclk,		//pixel clock: 25MHz
-    input wire [160:0] text, // string to display. 20 character max
-	output wire hsync,		//horizontal sync out
-	output wire vsync,		//vertical sync out
-	output reg [2:0] red,	//red vga output
-	output reg [2:0] green, //green vga output
-	output reg [1:0] blue	//blue vga output
+	input wire dclk,         //pixel clock: 25MHz
+	input wire [160:0] text, // string to display. 20 character max
+	output wire hsync,	 //horizontal sync out
+	output wire vsync,	 //vertical sync out
+	output reg [2:0] red,	 //red vga output
+	output reg [2:0] green,  //green vga output
+	output reg [1:0] blue	 //blue vga output
 	);
 
 	// video structure constants
-	parameter hpixels = 800;// horizontal pixels per line
-	parameter vlines = 521; // vertical lines per frame
-	parameter hpulse = 96; 	// hsync pulse length
-	parameter vpulse = 2; 	// vsync pulse length
-	parameter hbp = 144; 	// end of horizontal back porch
-	parameter hfp = 784; 	// beginning of horizontal front porch
-	parameter vbp = 31; 		// end of vertical back porch
-	parameter vfp = 511; 	// beginning of vertical front porch
+	parameter hpixels = 800; // horizontal pixels per line
+	parameter vlines = 521;  // vertical lines per frame
+	parameter hpulse = 96; 	 // hsync pulse length
+	parameter vpulse = 2; 	 // vsync pulse length
+	parameter hbp = 144; 	 // end of horizontal back porch
+	parameter hfp = 784; 	 // beginning of horizontal front porch
+	parameter vbp = 31; 	 // end of vertical back porch
+	parameter vfp = 511; 	 // beginning of vertical front porch
 	// active horizontal video is therefore: 784 - 144 = 640
-	// active vertical video is therefore: 511 - 31 = 480
+	// active vertical video is therefore:   511 -  31 = 480
 
     parameter block_h      = 48;  // height of 1 character block
     parameter block_w      = 32;  // width of 1 character block
@@ -56,7 +56,6 @@ module Displayylmao(
     reg [9:0] nh;
     reg [9:0] nv;
     // LUNA IS THE BEST
-    //reg [160:0] text = "TSEB EHT SI ANUL"; // TEST STRING ADFKJLASDFJLASDKFJLSAKDJFLKASJFLKADJFLAKSJDFLK
 
 	// Horizontal & vertical counters --
 	// this is how we keep track of where we are on the screen.
